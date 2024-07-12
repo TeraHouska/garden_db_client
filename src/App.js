@@ -1,10 +1,11 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter, Link, Route, Routes, Navigate } from "react-router-dom";
+import FlowerIndex from "./elements/FlowerIndex";
 
 export default function App() {
   return (
     <BrowserRouter>
-      
+      <div className="d-flex flex-row">
         <div className="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style={{width: 280 + "px", height: 100 + "vh"}}>
           <a href="/" className="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
             <span className="fs-4">Helclovo zahradnictví</span>
@@ -12,24 +13,41 @@ export default function App() {
           <hr/>
           <ul className="nav nav-pills flex-column mb-auto">
             <li className="nav-item">
-              <a href="#" className="nav-link active" aria-current="page">
+              <b><Link to={"/sadba"} className="nav-link text-white">
                 SADBA
-              </a>
+              </Link></b>
+              <ul className="list-unstyled mb-2">
+                <li className="ps-4">
+                  <Link to={"/sadba/kvetiny"} className="nav-link text-white">
+                    Květiny
+                  </Link>
+                </li>
+                <li className="ps-4">
+                  <Link to={"/sadba/zelenina"} className="nav-link text-white">
+                    Zelenina
+                  </Link>
+                </li>
+                <li className="ps-4">
+                  <Link to={"/sadba/bylinky"} className="nav-link text-white">
+                    Bylinky
+                  </Link>
+                </li>
+              </ul>
             </li>
             <li>
-              <a href="#" className="nav-link text-white">
+              <b><Link to={"/sklizen"} className="nav-link text-white">
                 SKLIZEŇ
-              </a>
+              </Link></b>
             </li>
             <li>
-              <a href="#" className="nav-link text-white">
+              <b><Link to={"/dusicky"} className="nav-link text-white">
                 DUŠIČKY
-              </a>
+              </Link></b>
             </li>
           </ul>
           <hr/>
             <strong>
-              <a className="nav-link text-white">KONTAKT</a>
+              <Link to={"/kontakt"} className="nav-link text-white">KONTAKT</Link>
             </strong>
           <ul className="px-0 py-1">
             <li className="nav-link text-white">  
@@ -41,10 +59,16 @@ export default function App() {
           </ul>
         </div>
         <Routes>
-          <Route index element={<Navigate to={"/domu"} />} />
-          
+          <Route index element={<Navigate to={"/sadba/kvetiny"} />} />
+          <Route path="/sadba">
+            <Route path="kvetiny" element={<FlowerIndex/>}/>
+            <Route path="zelenina" element={null}/>
+            <Route path="bylinky" element={null}/>
+          </Route>
+          <Route path="sklizen" element={null}/>
+          <Route path="dusicky" element={null}/>
         </Routes>
-      
+      </div>        
     </BrowserRouter>
   );
 }
