@@ -1,6 +1,7 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter, Link, Route, Routes, Navigate } from "react-router-dom";
 import FlowerIndex from "./elements/FlowerIndex";
+import FlowerDetail from "./elements/FlowerDetail";
 
 export default function App() {
   return (
@@ -62,6 +63,7 @@ export default function App() {
           <Route index element={<Navigate to={"/sadba/kvetiny"} />} />
           <Route path="/sadba">
             <Route path="kvetiny" element={<FlowerIndex/>}/>
+            <Route path="kvetiny/:id" element={<FlowerDetail/>} />
             <Route path="zelenina" element={null}/>
             <Route path="bylinky" element={null}/>
           </Route>

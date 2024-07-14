@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { apiGet } from "../utils/api";
+import { Link } from "react-router-dom";
 
 export default function FlowerTable() {
 
@@ -27,7 +28,9 @@ export default function FlowerTable() {
                 {
                     flowers.map((flower, index) => 
                         <tr key={index}>
-                            <td><b>{flower.name}</b></td>
+                            <td><b><Link to={"/sadba/kvetiny/" + flower.id}>
+                                {flower.name}
+                            </Link></b></td>
                             <td className="text-success"><b>{flower.price} Kč</b></td>
                             <td>{flower.resilient ? "ANO" : "NE"}</td>
                             <td>{flower.sites}</td>
