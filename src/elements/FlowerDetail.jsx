@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { apiGet } from "../utils/api";
+import { dateToString } from "../utils/dateConverter";
+import { sitesToString } from "../utils/sitesConverter";
 
 export default function FlowerDetail() {
     const {id} = useParams();
@@ -10,7 +12,7 @@ export default function FlowerDetail() {
         decsription: "",
         price: "",
         availableFrom: "",
-        availableTO: "",
+        availableTo: "",
         overhanging: "",
         resilient: "",
         sites: "",
@@ -29,6 +31,9 @@ export default function FlowerDetail() {
         <article className="container">
             <h2>{flower.name}</h2>
             {flower.breed ? <p>Odrůda: {flower.breed}</p> : <></>}
+            <p>Běžně dostupné od: {dateToString(flower.availableFrom)}</p>
+            <p>Běžně dostupné do: {dateToString(flower.availableTo)}</p>
+            {flower.sites ? <p>Stanoviště: {sitesToString(flower.sites)}</p> : <></>}
         </article>
     )
 }

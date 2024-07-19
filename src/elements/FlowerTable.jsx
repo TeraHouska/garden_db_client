@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { apiGet } from "../utils/api";
 import { Link } from "react-router-dom";
+import { dateToString } from "../utils/dateConverter";
 
 export default function FlowerTable() {
 
@@ -21,7 +22,8 @@ export default function FlowerTable() {
                     <th>Název</th>
                     <th>Cena</th>
                     <th>Odolnost</th>
-                    <th>Stanoviště</th>
+                    <th>Dostupné od</th>
+                    <th>Dostupné do</th>
                 </tr>
             </thead>
             <tbody>
@@ -33,7 +35,8 @@ export default function FlowerTable() {
                             </Link></b></td>
                             <td className="text-success"><b>{flower.price} Kč</b></td>
                             <td>{flower.resilient ? "ANO" : "NE"}</td>
-                            <td>{flower.sites}</td>
+                            <td>{dateToString(flower.availableFrom)}</td>
+                            <td>{dateToString(flower.availableTo)}</td>
                         </tr>
                     )
                 }
