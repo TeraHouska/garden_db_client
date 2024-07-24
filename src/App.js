@@ -2,6 +2,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter, Link, Route, Routes, Navigate } from "react-router-dom";
 import FlowerIndex from "./elements/FlowerIndex";
 import FlowerDetail from "./elements/FlowerDetail";
+import ProductIndex from "./product/ProductIndex";
 
 export default function App() {
   return (
@@ -64,11 +65,11 @@ export default function App() {
           <Route path="/sadba">
             <Route path="kvetiny" element={<FlowerIndex/>}/>
             <Route path="kvetiny/:id" element={<FlowerDetail/>} />
-            <Route path="zelenina" element={null}/>
-            <Route path="bylinky" element={null}/>
+            <Route path="zelenina" element={<ProductIndex type="sow_vegetables" />}/>
+            <Route path="bylinky" element={<ProductIndex type="herbs" />}/>
           </Route>
-          <Route path="sklizen" element={null}/>
-          <Route path="dusicky" element={null}/>
+          <Route path="sklizen" element={<ProductIndex type="reap" />}/>
+          <Route path="dusicky" element={<ProductIndex type="souls" />}/>
         </Routes>
       </div>        
     </BrowserRouter>

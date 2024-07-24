@@ -1,19 +1,20 @@
 import { useEffect, useState } from "react";
 import { apiGet } from "../utils/api";
 import { Link } from "react-router-dom";
-import { toString } from "../utils/dateConverter";
+import { dateToString } from "../utils/dateConverter";
 
-export default function ProductTable() {
+export default function ProductTable({type}) {
 
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
+        //TODO: fetch depending on type
         async function fetchProducts() {
-            const data = await apiGet("/api/product/vegetables")
+            const data = await apiGet("/api/product/" + type)
             setProducts(data);
         };
         fetchProducts();
-    }, [])
+    }, [type])
 
     return (
         <table className="table table-bordered">
@@ -33,8 +34,8 @@ export default function ProductTable() {
                                 {product.name}
                             </Link></b></td>
                             <td className="text-success"><b>{product.price} Kč</b></td>
-                            <td>{toString(product.availableFrom)}</td>
-                            <td>{toString(product.availableTo)}</td>
+                            <td>{dateToString(product.availableFrom)}</td>
+                            <td>{dateToString(product.availableTo)}</td>
                         </tr>
                     )
                 }
