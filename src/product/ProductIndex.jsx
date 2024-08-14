@@ -1,25 +1,12 @@
 import ProductTable from "./ProductTable";
+import { apiToHeading } from "../utils/productTypeConverter";
 
 export default function ProductIndex({type}) {
-    //type: sow_vegetables, herbs, reap, souls
-    
-    function translateType() {
-        switch (type) {
-            case "sow_vegetables":
-                return "Sadba zeleniny";
-            case "herbs":
-                return "Bylinky";
-            case "reap":
-                return "Zelenina";
-            case "souls":
-                return "Dušičkové zboží";
-            default: return "";
-        }
-    }
+    //type: SOW_VEGETABLE, HERBS, REAP, SOULS
 
     return (
         <>
-            <h1>{translateType()}</h1>
+            <h1>{apiToHeading(type)}</h1>
             <ProductTable type={type} />
         </>
     )

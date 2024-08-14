@@ -13,7 +13,6 @@ async function fetchData(url, requestOptions) {
     const allRequestOptions = {credentials: "include", ...requestOptions};
 
     const response = await fetch(apiUrl, allRequestOptions);
-    console.log(response)
     if (allRequestOptions.method !== "DELETE" && response.status !== 401) {
         const data = await response.json();
         return data;

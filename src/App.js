@@ -9,6 +9,7 @@ import { useSession } from "./contexts/session";
 import { apiDelete } from "./utils/api";
 import SowProducts from "./homepage/SowProducts";
 import HomePage from "./homepage/HomePage";
+import ProductDetail from "./product/ProductDetail";
 
 export default function App() {
   
@@ -93,11 +94,12 @@ export default function App() {
               <Route path="" element={<SowProducts/>} />
               <Route path="kvetiny" element={<FlowerIndex/>}/>
               <Route path="kvetiny/:id" element={<FlowerDetail/>} />
-              <Route path="zelenina" element={<ProductIndex type="sow_vegetables" />}/>
-              <Route path="bylinky" element={<ProductIndex type="herbs" />}/>
+              <Route path="zelenina" element={<ProductIndex type="SOW_VEGETABLES" />}/>
+              <Route path="bylinky" element={<ProductIndex type="HERBS" />}/>
             </Route>
-            <Route path="/sklizen" element={<ProductIndex type="reap" />}/>
-            <Route path="/dusicky" element={<ProductIndex type="souls" />}/>
+            <Route path="/sklizen" element={<ProductIndex type="REAP" />}/>
+            <Route path="/dusicky" element={<ProductIndex type="SOULS" />}/>
+            <Route path="/produkty/:id" element={<ProductDetail/>} />
             <Route path="/registrace" element={<RegistrationPage/>}/>
             <Route path="/login" element={<LoginPage/>}/>
           </Routes>

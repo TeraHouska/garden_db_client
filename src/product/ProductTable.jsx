@@ -12,7 +12,7 @@ export default function ProductTable({type}) {
 
     useEffect(() => {
         async function fetchProducts() {
-            const data = await apiGet("/api/product/" + type)
+            const data = await apiGet("/api/product/" + type.toLowerCase())
             setProducts(data);
         };
         fetchProducts();
@@ -34,7 +34,7 @@ export default function ProductTable({type}) {
                 {
                     products.map((product, index) => 
                         <tr key={index}>
-                            <td><b><Link to={"/sadba/kvetiny/" + product.id}>
+                            <td><b><Link to={"/produkty/" + product.id}>
                                 {product.name}
                             </Link></b></td>
                             {isAdmin ? 
