@@ -1,12 +1,21 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter, Link, Route, Routes, Navigate } from "react-router-dom";
-import FlowerIndex from "./elements/FlowerIndex";
-import FlowerDetail from "./elements/FlowerDetail";
+import FlowerIndex from "./flower/FlowerIndex";
+import FlowerDetail from "./flower/FlowerDetail";
 import ProductIndex from "./product/ProductIndex";
 import { RegistrationPage } from "./registration/RegistrationPage";
 import LoginPage from "./registration/LoginPage";
+import { useSession } from "./contexts/session";
+import { apiDelete } from "./utils/api";
 
 export default function App() {
+  
+  const {session, setSession} = useSession();
+  const handleLogoutClick = () => {
+    apiDelete("/api/auth")
+      .finally(() => setSession({data: null, status: "unauthorized"}));
+  }
+  
   return (
     <BrowserRouter>
       <div className="d-flex flex-row">
@@ -50,9 +59,18 @@ export default function App() {
             </li>
           </ul>
           
-          <hr/>
-          <Link to={"/registrace"} className="nav-link text-white">REGISTRACE</Link>
-          <Link to={"/login"} className="nav-link text-white my-2">PŘIHLÁŠENÍ</Link>
+          {session.data ? 
+          <>
+            <p>Přihlášen jako {session.data.email}</p>
+            <button className="btn btn-sm btn-secondary" onClick={handleLogoutClick}>Odhlásit</button>
+          </> :
+          <>
+            <hr/>
+            <Link to={"/registrace"} className="nav-link text-white">REGISTRACE</Link>
+            <Link to={"/login"} className="nav-link text-white my-2">PŘIHLÁŠENÍ</Link>
+          </>
+          }
+          
           <hr/>
           <strong>
             <Link to={"/kontakt"} className="nav-link text-white">KONTAKT</Link>

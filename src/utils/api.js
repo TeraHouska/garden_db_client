@@ -19,9 +19,7 @@ async function fetchData(url, requestOptions) {
 
 export function apiGet(url) {
 
-    const requestOptions = {
-        method: "GET",
-    };
+    const requestOptions = {method: "GET"};
 
     return fetchData(url, requestOptions);
 }
@@ -35,4 +33,11 @@ export function apiPost(url, data) {
     };
 
     return fetchData(url, requestOptions)
+}
+
+export function apiDelete(url) {
+
+    const requestOptions = {method: "DELETE"};
+
+    return fetchData(url, requestOptions);
 }

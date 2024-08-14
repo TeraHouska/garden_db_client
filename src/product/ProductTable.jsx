@@ -2,13 +2,15 @@ import { useEffect, useState } from "react";
 import { apiGet } from "../utils/api";
 import { Link } from "react-router-dom";
 import { dateToString } from "../utils/dateConverter";
+import { useSession } from "../contexts/session";
 
 export default function ProductTable({type}) {
 
     const [products, setProducts] = useState([]);
+    const {session} = useSession();
+    const isAdmin = session.data?.admin;
 
     useEffect(() => {
-        //TODO: fetch depending on type
         async function fetchProducts() {
             const data = await apiGet("/api/product/" + type)
             setProducts(data);
@@ -21,6 +23,8 @@ export default function ProductTable({type}) {
             <thead>
                 <tr>
                     <th>Název</th>
+                    {isAdmin ? 
+                    <th>Možnosti</th> : <></>}
                     <th>Cena</th>
                     <th>Dostupné od</th>
                     <th>Dostupné do</th>
@@ -33,6 +37,11 @@ export default function ProductTable({type}) {
                             <td><b><Link to={"/sadba/kvetiny/" + product.id}>
                                 {product.name}
                             </Link></b></td>
+                            {isAdmin ? 
+                            <td>
+                                <button className="btn btn-sm btn-warning me-1">Upravit</button>
+                                <button className="btn btn-sm btn-danger me-1">Smazat</button>
+                            </td> : <></>}
                             <td className="text-success"><b>{product.price} Kč</b></td>
                             <td>{dateToString(product.availableFrom)}</td>
                             <td>{dateToString(product.availableTo)}</td>

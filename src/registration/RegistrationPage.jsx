@@ -39,7 +39,7 @@ export const RegistrationPage = () => {
 
     return (
         <div className="offset-1 col-sm-4 mt-5">
-        <h1>Registrace</h1>
+            <h1>Registrace</h1>
             <form onSubmit={handleSubmit}>
                 {errorMessageState ? <p className="text-danger">{errorMessageState}</p> : <></>}
                 <InputField type="email" name="email" label="E-mail" prompt="Zadejte Váš E-mail" value={valuesState.email}
