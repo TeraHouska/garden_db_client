@@ -13,9 +13,9 @@ export default function LoginPage() {
 
     useEffect(() => {
         if (session.data) {
-            navigate("/");
+            navigate("/sadba")
         }
-    }, [session]);
+    }, [session, navigate]);
 
     const handleChange = (e) => {
         const fieldName = e.target.name;

@@ -1,5 +1,5 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import { BrowserRouter, Link, Route, Routes, Navigate } from "react-router-dom";
+import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 import FlowerIndex from "./flower/FlowerIndex";
 import FlowerDetail from "./flower/FlowerDetail";
 import ProductIndex from "./product/ProductIndex";
@@ -7,6 +7,8 @@ import { RegistrationPage } from "./registration/RegistrationPage";
 import LoginPage from "./registration/LoginPage";
 import { useSession } from "./contexts/session";
 import { apiDelete } from "./utils/api";
+import SowProducts from "./homepage/SowProducts";
+import HomePage from "./homepage/HomePage";
 
 export default function App() {
   
@@ -84,20 +86,23 @@ export default function App() {
             </li>
           </ul>
         </div>
-        <Routes>
-          <Route index element={<Navigate to={"/sadba/kvetiny"} />} />
-          <Route path="/sadba">
-            <Route path="kvetiny" element={<FlowerIndex/>}/>
-            <Route path="kvetiny/:id" element={<FlowerDetail/>} />
-            <Route path="zelenina" element={<ProductIndex type="sow_vegetables" />}/>
-            <Route path="bylinky" element={<ProductIndex type="herbs" />}/>
-          </Route>
-          <Route path="/sklizen" element={<ProductIndex type="reap" />}/>
-          <Route path="/dusicky" element={<ProductIndex type="souls" />}/>
-          <Route path="/registrace" element={<RegistrationPage/>}/>
-          <Route path="/login" element={<LoginPage/>}/>
-        </Routes>
-      </div>        
+        <div className="container mt-5">
+          <Routes>
+            <Route index element={<HomePage/>} />
+            <Route path="/sadba">
+              <Route path="" element={<SowProducts/>} />
+              <Route path="kvetiny" element={<FlowerIndex/>}/>
+              <Route path="kvetiny/:id" element={<FlowerDetail/>} />
+              <Route path="zelenina" element={<ProductIndex type="sow_vegetables" />}/>
+              <Route path="bylinky" element={<ProductIndex type="herbs" />}/>
+            </Route>
+            <Route path="/sklizen" element={<ProductIndex type="reap" />}/>
+            <Route path="/dusicky" element={<ProductIndex type="souls" />}/>
+            <Route path="/registrace" element={<RegistrationPage/>}/>
+            <Route path="/login" element={<LoginPage/>}/>
+          </Routes>
+        </div>
+      </div>
     </BrowserRouter>
   );
 }

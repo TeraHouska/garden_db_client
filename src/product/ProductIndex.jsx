@@ -18,9 +18,9 @@ export default function ProductIndex({type}) {
     }
 
     return (
-        <div className="container">
+        <>
             <h1>{translateType()}</h1>
             <ProductTable type={type} />
-        </div>
+        </>
     )
 }
