@@ -5,6 +5,8 @@ const siteTranslation = new Map([
     ["EAST", "východ"]
 ])
 
+// translates site from API doc to czech
+
 export function sitesToString(sites) {
     let mappedSites = sites.map((site) => siteTranslation.get(site));
     return mappedSites.join(", ");

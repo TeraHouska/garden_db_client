@@ -1,10 +1,18 @@
 
 const API_URL = "http://localhost:8080";
 
+export class HttpRequestError extends Error {
+    constructor(response) {
+        super(`Network response was not ok: ${response.status} ${response.statusText}`);
+        this.response = response;
+    }
+}
+
 async function fetchData(url, requestOptions) {
     const apiUrl = `${API_URL}${url}`;
+    const allRequestOptions = {credentials: "include", ...requestOptions};
 
-    const response = await fetch(apiUrl, requestOptions);
+    const response = await fetch(apiUrl, allRequestOptions);
     const data = await response.json();
     return data;
 }

@@ -3,6 +3,8 @@ import { BrowserRouter, Link, Route, Routes, Navigate } from "react-router-dom";
 import FlowerIndex from "./elements/FlowerIndex";
 import FlowerDetail from "./elements/FlowerDetail";
 import ProductIndex from "./product/ProductIndex";
+import { RegistrationPage } from "./registration/RegistrationPage";
+import LoginPage from "./registration/LoginPage";
 
 export default function App() {
   return (
@@ -47,10 +49,14 @@ export default function App() {
               </Link></b>
             </li>
           </ul>
+          
           <hr/>
-            <strong>
-              <Link to={"/kontakt"} className="nav-link text-white">KONTAKT</Link>
-            </strong>
+          <Link to={"/registrace"} className="nav-link text-white">REGISTRACE</Link>
+          <Link to={"/login"} className="nav-link text-white my-2">PŘIHLÁŠENÍ</Link>
+          <hr/>
+          <strong>
+            <Link to={"/kontakt"} className="nav-link text-white">KONTAKT</Link>
+          </strong>
           <ul className="px-0 py-1">
             <li className="nav-link text-white">  
               Telefon: 737 112 401
@@ -68,8 +74,10 @@ export default function App() {
             <Route path="zelenina" element={<ProductIndex type="sow_vegetables" />}/>
             <Route path="bylinky" element={<ProductIndex type="herbs" />}/>
           </Route>
-          <Route path="sklizen" element={<ProductIndex type="reap" />}/>
-          <Route path="dusicky" element={<ProductIndex type="souls" />}/>
+          <Route path="/sklizen" element={<ProductIndex type="reap" />}/>
+          <Route path="/dusicky" element={<ProductIndex type="souls" />}/>
+          <Route path="/registrace" element={<RegistrationPage/>}/>
+          <Route path="/login" element={<LoginPage/>}/>
         </Routes>
       </div>        
     </BrowserRouter>
