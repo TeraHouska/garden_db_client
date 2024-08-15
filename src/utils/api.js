@@ -38,6 +38,17 @@ export function apiPost(url, data) {
     return fetchData(url, requestOptions)
 }
 
+export function apiPut(url, data) {
+
+    const requestOptions = {
+        method: "PUT",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(data)
+    };
+
+    return fetchData(url, requestOptions)
+}
+
 export function apiDelete(url) {
 
     const requestOptions = {method: "DELETE"};

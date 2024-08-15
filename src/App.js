@@ -10,6 +10,7 @@ import { apiDelete } from "./utils/api";
 import SowProducts from "./homepage/SowProducts";
 import HomePage from "./homepage/HomePage";
 import ProductDetail from "./product/ProductDetail";
+import FlowerForm from "./flower/FlowerForm";
 
 export default function App() {
   
@@ -94,6 +95,7 @@ export default function App() {
               <Route path="" element={<SowProducts/>} />
               <Route path="kvetiny" element={<FlowerIndex/>}/>
               <Route path="kvetiny/:id" element={<FlowerDetail/>} />
+              <Route path="kvetiny/pridat" element={<FlowerForm/>}/>
               <Route path="zelenina" element={<ProductIndex type="SOW_VEGETABLES" />}/>
               <Route path="bylinky" element={<ProductIndex type="HERBS" />}/>
             </Route>
