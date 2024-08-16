@@ -97,6 +97,7 @@ export default function App() {
               <Route path="kvetiny" element={<FlowerIndex/>}/>
               <Route path="kvetiny/:id" element={<FlowerDetail/>} />
               <Route path="kvetiny/pridat" element={<FlowerForm/>}/>
+              <Route path="kvetiny/upravit/:id" element={<FlowerForm/>}/>
               <Route path="zelenina" element={<ProductIndex type="SOW_VEGETABLES" />}/>
               <Route path="bylinky" element={<ProductIndex type="HERBS" />}/>
             </Route>
@@ -104,6 +105,7 @@ export default function App() {
             <Route path="/dusicky" element={<ProductIndex type="SOULS" />}/>
             <Route path="/produkty/:id" element={<ProductDetail/>}/>
             <Route path="/produkty/pridat" element={<ProductForm/>}/>
+            <Route path="/produkty/upravit/:id" element={<ProductForm/>}/>
             <Route path="/registrace" element={<RegistrationPage/>}/>
             <Route path="/login" element={<LoginPage/>}/>
           </Routes>

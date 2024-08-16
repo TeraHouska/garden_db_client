@@ -39,7 +39,7 @@ export default function ProductTable({type}) {
                             </Link></b></td>
                             {isAdmin ? 
                             <td>
-                                <button className="btn btn-sm btn-warning me-1">Upravit</button>
+                                <Link className="btn btn-sm btn-warning me-1" to={"/produkty/upravit/" + product.id}>Upravit</Link>
                                 <button className="btn btn-sm btn-danger me-1">Smazat</button>
                             </td> : <></>}
                             <td className="text-success"><b>{product.price} Kč</b></td>

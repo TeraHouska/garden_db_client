@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import {useNavigate, useParams} from "react-router-dom";
 
 import {apiGet, apiPost, apiPut} from "../utils/api";
-import { isoToArray } from "../utils/dateConverter";
+import { arrayToIso, isoToArray } from "../utils/dateConverter";
 import InputField from "../components/InputField";
 import FlashMessage from "../components/FlashMessage";
 import InputCheck from "../components/InputCheck";
@@ -31,7 +31,14 @@ export default function FlowerForm() {
 
     useEffect(() => {
         if (id) {
-            apiGet("/api/flower/" + id).then((data) => setFlower(data));
+            apiGet("/api/flower/" + id).then(
+                (data) => setFlower({
+                    ...data,
+                    availableFrom: arrayToIso(data.availableFrom),
+                    availableTo: arrayToIso(data.availableTo)
+                })
+            );
+            console.log(flower)
         }
     }, [id]);
 
@@ -180,7 +187,8 @@ export default function FlowerForm() {
                         setFlower({...flower, sites: value});
                     }}
                 />
-
+                
+                {/*TODO: fix checking boxes on edit after fetch*/}
                 <InputCheck
                     type="checkbox"
                     name="overhanging"
