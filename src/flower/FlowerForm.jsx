@@ -15,7 +15,7 @@ export default function FlowerForm() {
         name: "",
         breed: "",
         description: "",
-        price: 0,
+        price: "",
         availableFrom: "",
         availableTo: "",
         overhanging: false,
@@ -50,13 +50,9 @@ export default function FlowerForm() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const flowerDTO = {
-            ...flower,
-            availableFrom: isoToArray(flower.availableFrom),
-            availableTo: isoToArray(flower.availableTo)
-        }
+        //const flowerDTO = {...flower, availableFrom: isoToArray(flower.availableFrom), availableTo: isoToArray(flower.availableTo)}
 
-        (id ? apiPut("/api/flower/edit/" + id, flowerDTO) : apiPost("/api/flower/add", flowerDTO))
+        (id ? apiPut("/api/flower/edit/" + id, {...flower, availableFrom: isoToArray(flower.availableFrom), availableTo: isoToArray(flower.availableTo)}) : apiPost("/api/flower/add", {...flower, availableFrom: isoToArray(flower.availableFrom), availableTo: isoToArray(flower.availableTo)}))
             .then(() => {
                 setSent(true);
                 setSuccess(true);

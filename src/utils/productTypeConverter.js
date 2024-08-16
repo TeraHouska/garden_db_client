@@ -5,7 +5,7 @@ export function apiToHeading(type) {
         case "HERBS":
             return "Bylinky";
         case "REAP":
-            return "Zelenina";
+            return "Hotová zelenina";
         case "SOULS":
             return "Dušičkové zboží";
         default: return "";

@@ -11,6 +11,7 @@ import SowProducts from "./homepage/SowProducts";
 import HomePage from "./homepage/HomePage";
 import ProductDetail from "./product/ProductDetail";
 import FlowerForm from "./flower/FlowerForm";
+import ProductForm from "./product/ProductForm";
 
 export default function App() {
   
@@ -101,7 +102,8 @@ export default function App() {
             </Route>
             <Route path="/sklizen" element={<ProductIndex type="REAP" />}/>
             <Route path="/dusicky" element={<ProductIndex type="SOULS" />}/>
-            <Route path="/produkty/:id" element={<ProductDetail/>} />
+            <Route path="/produkty/:id" element={<ProductDetail/>}/>
+            <Route path="/produkty/pridat" element={<ProductForm/>}/>
             <Route path="/registrace" element={<RegistrationPage/>}/>
             <Route path="/login" element={<LoginPage/>}/>
           </Routes>
