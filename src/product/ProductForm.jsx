@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import {useNavigate, useParams} from "react-router-dom";
 
 import {apiGet, apiPost, apiPut} from "../utils/api";
-import { isoToArray } from "../utils/dateConverter";
+import { arrayToIso, isoToArray } from "../utils/dateConverter";
 import InputField from "../components/InputField";
 import FlashMessage from "../components/FlashMessage";
 import InputCheck from "../components/InputCheck";
@@ -29,7 +29,11 @@ export default function ProductForm() {
 
     useEffect(() => {
         if (id) {
-            apiGet("/api/product/" + id).then((data) => setProduct(data));
+            apiGet("/api/product/" + id).then((data) => setProduct({
+                ...data,
+                availableFrom: arrayToIso(data.availableFrom),
+                availableTo: arrayToIso(data.availableTo)
+            }));
         }
     }, [id]);
 
